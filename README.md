@@ -16,7 +16,7 @@ Continuum Chat 是一个面向**长期个人 Agent**的应用级 **LLM Agent Har
 - **Evaluation / observability**：本地测试、隐私扫描、usage analytics 与可复现 Mock 流程
 - **Sanitized product UI snapshot**：保留公开快照中的聊天/推理/工具呈现、历史、Memory、上下文/设置、模型/Provider、MCP/插件/工具、日历/日记与其他主要界面
 
-### 求职与评审者速览（2026-10-09）
+### 求职与评审者速览（2026-10-13）
 
 **项目角色：** 负责长期 Agent 的需求分析、系统规则与方案取舍、故障复现、模型/Prompt 对比、测试设计和验收；工程实现主要通过 Codex 等 Coding Agent 协作完成。这个作品展示的是 **AI 应用设计、Agent 工作流与工程验证能力**，并不声称独立完成所有生产代码或基础模型训练。
 
@@ -25,8 +25,8 @@ Continuum Chat 是一个面向**长期个人 Agent**的应用级 **LLM Agent Har
 | 领域 | 源产品的能力或真实阶段 |
 | --- | --- |
 | Chat / Runtime | 服务器正式会话、Generation 生命周期、ContextEpoch、流式与工具事件、编辑/重发/取消/恢复 |
-| Prompt / Context | Prompt Workspace、Handoff、Working Memory、最终 Provider 输入观察和冗余治理 |
-| 长期 Memory | 原始证据、卡片修订、Scene-first Writer、Gatekeeper、词法/向量召回、Related / Ambient / 行动前召回 |
+| Prompt / Context | Prompt Workspace、Handoff、Working Memory、最终 Provider 输入观察和冗余治理；时间语义召回已完成专项修复 |
+| 长期 Memory | 原始证据、卡片修订、Scene-first Writer、Gatekeeper、词法/向量召回、Related / Ambient / 行动前召回；Web 管理台支持版本编辑、原文证据与可恢复归档 |
 | 历史治理 / Water | 2026-10-09 完成 R5 生产切换；5 Lake、18 Stream、545 个归属；新主题自动生长仍未完成 |
 | 主动性与计划 | 主动联系、自由活动、Trigger / Self Plan、有限 Pending、工具执行回执 |
 | Self Model | 与 Memory 分离的真实证据、建议复核、成熟度 Gate、跨窗口采用机制 |
@@ -44,16 +44,18 @@ Continuum Chat 是一个面向**长期个人 Agent**的应用级 **LLM Agent Har
 | 长对话被后台信息污染 | 对最终 Provider 输入做审计，保留真实对话原文，隔离历史后台状态 | [案例 3、9](docs/CASE_STUDIES.md) |
 | R5 历史记忆重建 | 审核候选、正式修订、Water 切换、索引对账与回滚证据 | [案例 10](docs/CASE_STUDIES.md) |
 | 模型原生传输和缓存故障 | SSE 分帧、工具续轮与 Provider usage 对账 | [案例 11](docs/CASE_STUDIES.md) |
+| “昨晚两点”等时间指代检索不稳 | 意图门控、相对时间解析、隔离回归与发布回退 | [案例 12](docs/CASE_STUDIES.md) |
+| Memory 管理界面混淆旧标签与真实归属 | 版本化操作、来源原文校验、Sea 状态和 Water 路径分离 | [案例 13](docs/CASE_STUDIES.md) |
 
-**状态边界：** 本仓库可运行的是脱敏参考实现；源产品 **已上线并验证** 的包括 Memory VNext 召回、Scene-first Writer、主动/行动前记忆和部分 Context 观测链路，相关源产品实现并未完整开源。记忆整体重建已于 **2026-10-09 完成 R5 生产切换**；Water 新主题自动生长仍未上线，新每日维护任务的首次自然运行效果仍待观察；Context Inspector 部分前端界面仍在迭代。以上状态不能理解为公开 Demo 已具备所有生产能力。
+**状态边界：** 本仓库可运行的是脱敏参考实现；源产品 **已上线并验证** 的包括 Memory VNext 召回、Scene-first Writer、主动/行动前记忆和部分 Context 观测链路，相关源产品实现并未完整开源。记忆整体重建已于 **2026-10-09 完成 R5 生产切换**；Water 新主题自动生长仍未上线；2026-10-13 已核验自然 Writer/索引运行，但记忆复活等长期效果仍待真实使用观察。Memory Web 的水系路径、证据显示和管理操作已交付，旧分类写入规则仍未统一；App 水系界面暂缓，Context Inspector 部分前端界面仍在迭代。以上状态不能理解为公开 Demo 已具备所有生产能力。
 
-> **作品集更新（2026-10-09）**：公开仓库继续保持可运行、可审查的精简基线；源产品已继续推进至 Memory VNext、Scene-first Writer、分层召回与激活、工具执行连续性及 Context 可观测性等机制。为了不把私人生产逻辑直接公开，这些能力先以脱敏案例记录在 [源项目工程案例](docs/CASE_STUDIES.md) 中，而不是整套复制进公开后端。
+> **作品集更新（2026-10-13）**：新增时间语义召回的意图门控、回退与验证案例，以及 Memory Web 的真实 Water 归属、带版本操作和原文证据处理案例；保留已上线、待观察与暂缓功能的区别。高级生产能力仍只以脱敏的 [工程案例](docs/CASE_STUDIES.md) 介绍，不复制私人生产代码或数据。
 
 **技术栈：** Flutter · FastAPI · SQLite · Python · Dart
 
 [![CI](https://github.com/yuyu1838309000-cmd/continuum-chat/actions/workflows/ci.yml/badge.svg)](https://github.com/yuyu1838309000-cmd/continuum-chat/actions/workflows/ci.yml)
 
-[招聘者速览](#求职与评审者速览2026-10-09) · [快速开始](#快速开始) · [30 秒代码导览](#30-秒代码导览) · [源项目工程案例](docs/CASE_STUDIES.md) · [成果预览](#成果预览) · [系统架构](#系统架构)
+[招聘者速览](#求职与评审者速览2026-10-13) · [快速开始](#快速开始) · [30 秒代码导览](#30-秒代码导览) · [源项目工程案例](docs/CASE_STUDIES.md) · [成果预览](#成果预览) · [系统架构](#系统架构)
 
 ## 30 秒代码导览
 
