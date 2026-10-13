@@ -16,7 +16,7 @@ The public repository is **not the complete production backend** of the source p
 - **Evaluation / observability:** local tests, privacy scanning, usage analytics, and deterministic mock flows
 - **Sanitized product UI snapshot:** preserves the major chat/reasoning/tool, history, Memory, context/settings, model/provider, MCP/plugin/tool, calendar/diary, and content surfaces from the public snapshot
 
-### For recruiters and technical reviewers (2026-10-09)
+### For recruiters and technical reviewers (2026-10-13)
 
 **My contribution:** product requirements, behavioral rules and trade-offs for long-running agents; failure reproduction, model/prompt comparisons, test design, and acceptance checks. Most implementation work was carried out collaboratively with Coding Agents such as Codex. This portfolio demonstrates **AI application design, agent workflows, and engineering validation**; it does not claim sole authorship of all production code or foundation-model training.
 
@@ -25,8 +25,8 @@ The public repository is **not the complete production backend** of the source p
 | Area | Actual source-product capability or stage |
 | --- | --- |
 | Chat / Runtime | Server-owned conversations, generation lifecycle, ContextEpochs, streaming/tool events, edit/regenerate/cancel/recovery |
-| Prompt / Context | Prompt Workspace, Handoff, Working Memory, final provider-input inspection and duplicate removal |
-| Long-term Memory | Raw evidence, revisions, Scene-first Writer, Gatekeeper, lexical/vector recall, related/ambient/pre-action retrieval |
+| Prompt / Context | Prompt Workspace, Handoff, Working Memory, final provider-input inspection and duplicate removal; targeted temporal-recall fixes |
+| Long-term Memory | Raw evidence, revisions, Scene-first Writer, Gatekeeper, lexical/vector recall, related/ambient/pre-action retrieval; versioned Web editing, source quotes, and recoverable archiving |
 | Memory governance / Water | R5 production cutover completed on 2026-10-09; 5 Lakes, 18 Streams, 545 memberships; automated new-topic growth unfinished |
 | Proactivity and planning | Contact triggers, free activities, Trigger / Self Plan, finite Pending, durable action receipts |
 | Self Model | Independent evidence, review suggestions, maturity gates and context-boundary adoption |
@@ -44,16 +44,18 @@ The public repository is **not the complete production backend** of the source p
 | Long-running conversations accumulate backend noise | Audit the final provider payload; preserve real conversation messages while separating historical backend bookkeeping | [Cases 3, 9](docs/CASE_STUDIES_EN.md) |
 | R5 historical-memory cutover | Human review, canonical revisions, Water graph, index reconciliation and rollback evidence | [Case 10](docs/CASE_STUDIES_EN.md) |
 | Native transport and cache faults | SSE framing, tool continuation and provider-usage reconciliation | [Case 11](docs/CASE_STUDIES_EN.md) |
+| Ambiguous references such as “2 a.m. last night” | Intent gating, relative-time parsing, isolated regressions and rollback verification | [Case 12](docs/CASE_STUDIES_EN.md) |
+| Memory UI conflates old tags with actual Water placement | Versioned operations, verified source quotes, and distinct Sea/Water states | [Case 13](docs/CASE_STUDIES_EN.md) |
 
-**Status boundary:** this repository runs a sanitized reference implementation. The source product has **deployed and validated** Memory VNext retrieval, a Scene-first writer, proactive/pre-action recall, and some context-observability paths; those advanced source implementations are **not fully open-sourced here**. The historical-memory rebuild completed its **R5 production cutover on 2026-10-09**. Automatic Water topic growth is not live, and the new daily maintenance schedule still needs natural-run observation. Parts of the Context Inspector UI remain in development. None of these statements implies the public demo already ships every production capability.
+**Status boundary:** this repository runs a sanitized reference implementation. The source product has **deployed and validated** Memory VNext retrieval, a Scene-first writer, proactive/pre-action recall, and some context-observability paths; those advanced source implementations are **not fully open-sourced here**. The historical-memory rebuild completed its **R5 production cutover on 2026-10-09**. Automatic Water topic growth is not live. The scheduled Writer/index natural run was verified on 2026-10-13, but long-term resurfacing still needs real-use observation. Memory Web Water paths, source evidence and management operations are deployed; legacy write-time categories remain in use, Water UI in the App is on hold, and parts of the Context Inspector UI remain in development. None of these statements implies the public demo already ships every production capability.
 
-> **Portfolio refresh (2026-10-09):** the public repository intentionally remains a runnable, reviewable baseline while the source product continues to evolve. More advanced long-running-agent mechanisms—including Memory VNext, Scene-first writing, layered recall/activation, tool execution continuity, and context observability—are documented as sanitized [source-product case studies](docs/CASE_STUDIES_EN.md) instead of being copied wholesale into the public backend.
+> **Portfolio refresh (2026-10-13):** added source-product case studies on temporal recall (intent gating, rollback and validation) and Memory Web governance (actual Water placement, versioned operations and verified source quotes). Deployed, observed and on-hold features remain explicitly distinguished. Production-only functionality is documented as sanitized [engineering cases](docs/CASE_STUDIES_EN.md), not copied from private source code or data.
 
 **Stack:** Flutter · FastAPI · SQLite · Python · Dart
 
 [![CI](https://github.com/yuyu1838309000-cmd/continuum-chat/actions/workflows/ci.yml/badge.svg)](https://github.com/yuyu1838309000-cmd/continuum-chat/actions/workflows/ci.yml)
 
-[Reviewer guide](#for-recruiters-and-technical-reviewers-2026-10-09) · [Quick start](#quick-start) · [30-second code tour](#30-second-code-tour) · [Source-product case studies](docs/CASE_STUDIES_EN.md) · [Product preview](#product-preview) · [Architecture](#architecture)
+[Reviewer guide](#for-recruiters-and-technical-reviewers-2026-10-13) · [Quick start](#quick-start) · [30-second code tour](#30-second-code-tour) · [Source-product case studies](docs/CASE_STUDIES_EN.md) · [Product preview](#product-preview) · [Architecture](#architecture)
 
 ## 30-second code tour
 
