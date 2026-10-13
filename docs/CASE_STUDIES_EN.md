@@ -307,6 +307,48 @@ The public reference provides a compact OpenAI-compatible adapter and mock flow;
 
 ---
 
+## 12. Temporal recall: intent gating, cross-midnight queries, and safe rollback
+
+### Problem
+
+Queries such as “2 a.m. last night” combine relative dates with clock times that may cross midnight. Conversely, an ordinary message containing “today” is not necessarily a request to search history. System-generated timestamps or loosely matched time words can introduce irrelevant retrieval.
+
+### Design and trade-offs
+
+- Trigger timeline retrieval only for explicit historical-recall requests or standalone time questions, not general small talk.
+- Strip generated time headers from the retrieval query without rewriting the user's authored text or canonical history.
+- Parse relative days, night/midnight expressions, Chinese clock phrases and HH:MM, with explicit cross-midnight semantics and bounded time windows.
+- Test pure parsing functions as well as actual module imports and integration entry points.
+
+### Verified result and boundary
+
+The source product deployed **v2 on 2026-10-12**, after **nine targeted tests** covering time policy, temporary-database search ranges, and real-module import/assembly paths. The earlier v1 deployment was rolled back when an additional check uncovered a missing explicit import; v2 was corrected, revalidated and redeployed. A passing health check was not treated as sufficient acceptance evidence.
+
+Natural-use retrieval quality still needs observation, and the fix does not claim to resolve all semantic-ranking issues. This specialized production path and real conversation history are not part of the public demo.
+
+---
+
+## 13. Memory Web: distinguish verified facts from incomplete classifications
+
+### Problem
+
+Legacy category tags are not the same as actual Water (Lake / Stream / Branch) placement. A record awaiting maintenance must not be labeled as having “no matching location.” Suggestion actions without visible feedback hide authorization, network, stale-revision and refresh failures. Technical evidence identifiers alone do not let users check the original quoted content.
+
+### Design and trade-offs
+
+- Render actual Water memberships through the authoritative API; show legacy tags as historical classifications. Distinguish unassigned Sea entries, pending maintenance, recorded decisions and unknown status.
+- Prefer source-bound quotations with speaker and time. Distinguish absent, deleted, failed-verification and legacy sources rather than inventing quotes or claiming unverified material is verified.
+- Keep version checks, editable records, archival, recoverable trash and restore. Reuse existing authorization for accepting/reversing suggestions, with visible busy, failure and post-save-refresh states.
+- Merge discovery suggestions only with explicit alias evidence; neither mere co-occurrence nor similarity automatically establishes identity, and user approval is still required.
+
+### Verified result and boundary
+
+Source-product Web updates were deployed on **2026-10-13**. Focused Water suggestion checks passed **36 tests**, Sea/trash-state regressions passed **21 tests**, and source-quotation/display behavior was checked with isolated browser fixtures and production read-only endpoints. No production memory was written or user suggestion automatically accepted for testing.
+
+**Legacy categories still drive some write-time tagging**; they have not been unified with Water. Water UI in the Android App is on hold; some legacy sources cannot yield verified quotes; real user interaction remains under observation. These source-product Web capabilities are not implemented in the public demo.
+
+---
+
 ## Shared principles
 
 The source-product iteration converged on several recurring rules:
