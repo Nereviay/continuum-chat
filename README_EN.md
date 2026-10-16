@@ -53,7 +53,7 @@ The public repository is **not the complete production backend** of the source p
 
 **Stack:** Flutter · FastAPI · SQLite · Python · Dart
 
-[![CI](https://github.com/yuyu1838309000-cmd/continuum-chat/actions/workflows/ci.yml/badge.svg)](https://github.com/yuyu1838309000-cmd/continuum-chat/actions/workflows/ci.yml)
+[![CI](https://github.com/Nereviay/continuum-chat/actions/workflows/ci.yml/badge.svg)](https://github.com/Nereviay/continuum-chat/actions/workflows/ci.yml)
 
 [Reviewer guide](#for-recruiters-and-technical-reviewers-2026-10-13) · [Quick start](#quick-start) · [30-second code tour](#30-second-code-tour) · [Source-product case studies](docs/CASE_STUDIES_EN.md) · [Product preview](#product-preview) · [Architecture](#architecture)
 
@@ -160,7 +160,7 @@ Both screenshots come from the sanitized Android demo and use synthetic demo dat
 Requirements: **Python 3.10+** and a macOS/Linux Bash shell. (`bootstrap_dev.sh` creates the virtual environment, installs Python dependencies, and creates ignored local configuration files.)
 
 ```bash
-git clone https://github.com/yuyu1838309000-cmd/continuum-chat.git
+git clone https://github.com/Nereviay/continuum-chat.git
 cd continuum-chat
 ./scripts/bootstrap_dev.sh
 ```
