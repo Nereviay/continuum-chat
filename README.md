@@ -53,7 +53,7 @@ Continuum Chat 是一个面向**长期个人 Agent**的应用级 **LLM Agent Har
 
 **技术栈：** Flutter · FastAPI · SQLite · Python · Dart
 
-[![CI](https://github.com/yuyu1838309000-cmd/continuum-chat/actions/workflows/ci.yml/badge.svg)](https://github.com/yuyu1838309000-cmd/continuum-chat/actions/workflows/ci.yml)
+[![CI](https://github.com/Nereviay/continuum-chat/actions/workflows/ci.yml/badge.svg)](https://github.com/Nereviay/continuum-chat/actions/workflows/ci.yml)
 
 [招聘者速览](#求职与评审者速览2026-10-13) · [快速开始](#快速开始) · [30 秒代码导览](#30-秒代码导览) · [源项目工程案例](docs/CASE_STUDIES.md) · [成果预览](#成果预览) · [系统架构](#系统架构)
 
@@ -160,7 +160,7 @@ flowchart TB
 要求：**Python 3.10+** 与 macOS/Linux Bash。(`bootstrap_dev.sh` 会创建虚拟环境、安装 Python 依赖，并生成被 Git 忽略的本地配置文件。)
 
 ```bash
-git clone https://github.com/yuyu1838309000-cmd/continuum-chat.git
+git clone https://github.com/Nereviay/continuum-chat.git
 cd continuum-chat
 ./scripts/bootstrap_dev.sh
 ```
